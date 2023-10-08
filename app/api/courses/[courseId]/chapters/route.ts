@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
+import { Router } from "next/router";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request, { params: { courseId } }: { params: { courseId: string } }) {
