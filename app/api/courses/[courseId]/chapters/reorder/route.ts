@@ -10,14 +10,14 @@ export async function PUT(req: Request, { params: { courseId } }: { params: { co
 
     const { list } = await req.json();
 
-    const courseOwner = await db.course.findUnique({
+    const ownCourse = await db.course.findUnique({
       where: {
         id: courseId,
         userId,
       },
     });
 
-    if (!courseOwner) return new NextResponse("Unauthorised", { status: 401 });
+    if (!ownCourse) return new NextResponse("Unauthorised", { status: 401 });
 
     for (let item of list) {
       await db.chapter.update({
