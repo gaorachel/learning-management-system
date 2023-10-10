@@ -3,6 +3,7 @@
 import * as z from "zod";
 import axios from "axios";
 import { Video, Pencil, PlusCircle } from "lucide-react";
+import MuxPlayer from "@mux/mux-player-react";
 import { useState } from "react";
 import { Chapter, MuxData } from "@prisma/client";
 import toast from "react-hot-toast";
@@ -66,7 +67,9 @@ export const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVi
             <Video className="h-10 w-10 text-slate-500" />
           </div>
         ) : (
-          <div className="relative aspect-video mt-2">Video uploaded</div>
+          <div className="relative aspect-video mt-2">
+            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
+          </div>
         ))}
 
       {isEditing && (
