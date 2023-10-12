@@ -11,6 +11,7 @@ import { ChapterDescriptionForm } from "./_components/chapter-description-form";
 import { ChapterAccessForm } from "./_components/chapter-access-form";
 import { ChapterVideoForm } from "./_components/chapter-video-form";
 import { Banner } from "@/components/ui/banner";
+import { ChapterActions } from "./_components/chapter-actions";
 
 const ChapterIdPage = async ({
   params: { courseId, chapterId },
@@ -40,6 +41,8 @@ const ChapterIdPage = async ({
 
   const completionText = `(${completedFields}/${totalFields})`;
 
+  const isComplete = requiredFields.every(Boolean); // all elements are true
+
   return (
     <>
       {!chapter.isPublished && (
@@ -59,6 +62,12 @@ const ChapterIdPage = async ({
                 <h1 className="text-2xl font-medium"> Chapter Creation </h1>
                 <span className="text-sm text-slate-700"> Complete all fields {completionText} </span>
               </div>
+              <ChapterActions
+                disable={!isComplete}
+                courseId={courseId}
+                chapterId={chapterId}
+                isPublished={chapter.isPublished}
+              />
             </div>
           </div>
         </div>
