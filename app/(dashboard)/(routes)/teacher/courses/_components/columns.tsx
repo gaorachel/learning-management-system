@@ -13,13 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-
 export const columns: ColumnDef<Course>[] = [
   {
     accessorKey: "title",
