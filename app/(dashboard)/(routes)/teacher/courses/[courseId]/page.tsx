@@ -45,7 +45,7 @@ const CourseIdPage = async ({ params: { courseId } }: { params: { courseId: stri
     },
   });
 
-  if (!course) return redirect("/");
+  if (!course) return redirect("/teacher/courses");
 
   const requiredFields = [
     course.title,
