@@ -35,7 +35,7 @@ export const CourseSidebar = async ({ course, progressCount }: CourseSidebarProp
         <h1 className="font-semibold"> {course.title} </h1>
         {/* TODO: check purchase and add progress*/}
       </div>
-      <div className="fle flex-col w-full">
+      <div className="flex flex-col w-full">
         {course.chapters.map((chapter) => (
           <CourseSidebarItem
             key={chapter.id}
