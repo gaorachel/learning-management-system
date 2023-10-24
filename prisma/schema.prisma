@@ -64,7 +64,7 @@ model Chapter {
   muxData MuxData?
 
   courseId String
-  course Course @relation(fields: [courseId], references:[id], onDelete: Cascade )
+  course Course @relation(fields:[courseId], references:[id], onDelete:Cascade)
 
   userProgress UserProgress[]
 
@@ -80,7 +80,7 @@ model MuxData {
   playbackId String?
 
   chapterId String @unique
-  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapter Chapter @relation(fields:[chapterId], references:[id], onDelete:Cascade)
 }
 
 model UserProgress {
@@ -115,7 +115,7 @@ model Purchase {
 
 model StripeCustomer {
   id String @id @default(uuid())
-  userId String
+  userId String @unique
   stripeCustomerId String @unique
 
   createdAt DateTime @default(now())
