@@ -1,5 +1,5 @@
 # Intro
-[LMS](https://learning-management-system-rg.vercel.app]) is a full-stack Udemy-like web app.
+[LMS](https://learning-management-system-rg.vercel.app) is a full-stack Udemy-like web app.
 
 # Key Features
 ### Generic
