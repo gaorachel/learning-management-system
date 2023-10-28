@@ -42,30 +42,30 @@ export const getChapter = async ({ userId, courseId, chapterId }: GetChapterProp
     if (purchase) {
       attachments = await db.attachment.findMany({
         where: {
-          courseId,
+          courseId: courseId,
+        },
+      });
+    }
+
+    if (chapter.isFree || purchase) {
+      muxData = await db.muxData.findUnique({
+        where: {
+          chapterId: chapterId,
         },
       });
 
-      if (chapter.isFree || purchase) {
-        muxData = await db.muxData.findUnique({
-          where: {
-            chapterId,
+      nextChapter = await db.chapter.findFirst({
+        where: {
+          courseId: courseId,
+          isPublished: true,
+          position: {
+            gt: chapter?.position,
           },
-        });
-
-        nextChapter = await db.chapter.findFirst({
-          where: {
-            courseId,
-            isPublished: true,
-            position: {
-              gt: chapter?.position, // means the position is greater than the current position
-            },
-          },
-          orderBy: {
-            position: "asc",
-          },
-        });
-      }
+        },
+        orderBy: {
+          position: "asc",
+        },
+      });
     }
 
     const userProgress = await db.userProgress.findUnique({
